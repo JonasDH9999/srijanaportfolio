@@ -28,9 +28,9 @@ export default function Home() {
           {/* Left text section */}
           <motion.div
             
-            initial={{ x: 50, y:0, opacity: 0 }}
+            initial={{ x: 0, y:0, opacity: 1 }}
             animate={{ x: 0, y:-350, opacity: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 1, delay: 1 }}  // Delay the start by 1 second
             /* Scroll-based transform for upward motion */
             
             className="flex-1 flex flex-col justify-center max-w-[65%]"
@@ -51,7 +51,7 @@ export default function Home() {
             
             initial={{ x: 0, y: 0, opacity: 1 }}
             animate={{ x: 680, y: 0, opacity: 1 }}
-            transition={{ duration: 2 }}
+            transition={{ duration: 1, delay: 1 }}  // Delay the start by 1 second
             /* Scroll-based scale */
             className="absolute left-3/8 -translate-y-40"
           >
