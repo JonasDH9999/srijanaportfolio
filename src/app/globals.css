@@ -1,15 +1,116 @@
 @import "tailwindcss";
 
+/* ===============================
+  1) @font-face for "Boreal" 
+     (All weights & styles under ONE family)
+=============================== */
+
+/* ExtraLight (weight: 200) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 200; /* extralight */
+  font-style: normal;
+  src: url("/fonts/borealweb-extralight-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-extralight-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* ExtraLight Italic (weight: 200 italic) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 200; 
+  font-style: italic;
+  src: url("/fonts/borealweb-extralightitalic-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-extralightitalic-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* Light (weight: 300) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 300; /* light */
+  font-style: normal;
+  src: url("/fonts/borealweb-light-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-light-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* Light Italic (weight: 300 italic) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 300;
+  font-style: italic;
+  src: url("/fonts/borealweb-lightitalic-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-lightitalic-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* Regular (weight: 400) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 400; /* normal */
+  font-style: normal;
+  src: url("/fonts/borealweb-regular-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-regular-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* Italic (weight: 400 italic) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 400;
+  font-style: italic;
+  src: url("/fonts/borealweb-italic-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-italic-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* Medium (weight: 500) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 500; /* medium */
+  font-style: normal;
+  src: url("/fonts/borealweb-medium-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-medium-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* Medium Italic (weight: 500 italic) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 500;
+  font-style: italic;
+  src: url("/fonts/borealweb-mediumitalic-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-mediumitalic-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* Bold (weight: 700) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 700; /* bold */
+  font-style: normal;
+  src: url("/fonts/borealweb-bold-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-bold-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* Bold Italic (weight: 700 italic) */
+@font-face {
+  font-family: "Boreal";
+  font-weight: 700;
+  font-style: italic;
+  src: url("/fonts/borealweb-bolditalic-TRIAL.eot?#iefix") format("embedded-opentype"),
+       url("/fonts/borealweb-bolditalic-TRIAL.woff") format("woff");
+  font-display: swap;
+}
+
+/* ===============================
+  2) Theme / Colors 
+=============================== */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +120,13 @@
   }
 }
 
+/* ===============================
+  3) Global Body Styles 
+=============================== */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Boreal", sans-serif; /* default to Boreal */
+  font-weight: 400; /* normal by default */
+  margin: 0; /* remove default margin */
 }
