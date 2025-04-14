@@ -62,7 +62,7 @@ export default function Home() {
       {/* Main content area */}
       <main
         id="about"
-        className="min-h-screen flex flex-col justify-end gap-4 sm:gap-8 items-start p-8"
+        className="min-h-screen flex flex-col mt-12 md:mt-0 justify-around md:justify-end gap-4 sm:gap-8 items-start p-8"
         style={{ height: "calc(95vh - 4rem)" }}
       >
         {/* Container with text & image */}
@@ -149,8 +149,8 @@ export default function Home() {
       <section id="projects">
         <Link href="/bleedfestival">
             <article
-            className={`w-full flex flex-col mb-24 cursor-pointer ${
-              isMobile ? "p-0" : "pb-0"
+            className={`w-full flex flex-col  cursor-pointer ${
+              isMobile ? "p-0 mb-14" : "pb-0 mb-24"
             }`}
             id="bleed"
             >
