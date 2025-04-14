@@ -75,11 +75,11 @@ export default function Home() {
             animate={isMobile ? { x: 0, opacity: 1 } : { x: 640, opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
             // Only absolute-positioned on md+ (desktop)
-            // On mobile, float left so text wraps on the right & below
+            // On mobile, center the image
             className={`${
               isMobile
-                ? "float-left mr-4 mb-4"
-                : "md:absolute md:left-1/2 md:-translate-x-1/2 md:-translate-y-40"
+          ? "mx-auto mb-4"
+          : "md:absolute md:left-1/2 md:-translate-x-1/2 md:-translate-y-40"
             }`}
           >
             <Image
@@ -105,7 +105,7 @@ export default function Home() {
               isMobile ? "max-w-full" : "max-w-[65%]"
             }`}
           >
-            <h2 className="md:text-3xl font-medium mb-2 text-lg">
+            <h2 className="md:text-3xl font-medium mb-2 text-lg text-center md:text-left">
               I am Srijana, a graphic design student &amp; freelancer based in
               Belgium. I turn ideas into visuals that tell a story. Whether it’s
               a logo, branding, UX design, or any other creative project, I
@@ -148,29 +148,37 @@ export default function Home() {
       {/* Projects Section */}
       <section id="projects">
         <Link href="/bleedfestival">
-          <article
-            className="w-full pb-0 flex flex-col mb-24 cursor-pointer"
+            <article
+            className={`w-full flex flex-col mb-24 cursor-pointer ${
+              isMobile ? "p-0" : "pb-0"
+            }`}
             id="bleed"
-          >
+            >
             <motion.video
               src="/videos/home/Bleed_animation_homepage.mp4"
-              className="w-full object-contain p-8 pb-2"
+              className={`object-contain ${
+              isMobile ? "w-full" : "p-8 pb-2"
+              }`}
               autoPlay
               loop
               muted
               style={{ objectPosition: "center" }}
               onLoadedData={(e) => {
-                const video = e.currentTarget;
-                video.currentTime = 1;
+              const video = e.currentTarget;
+              video.currentTime = 1;
               }}
             />
-            <div className="flex justify-between p-8 pt-0 mt-0">
-              <h2 className="text-3xl font-medium">BLEED FESTIVAL</h2>
-              <h2 className="text-3xl font-medium text-gray-400">
-                Brand Identity - Event Branding
+            <div
+              className={`flex justify-between ${
+              isMobile ? "p-4" : "p-8 pt-0 mt-0"
+              }`}
+            >
+              <h2 className="text-lg md:text-3xl font-medium">BLEED FESTIVAL</h2>
+              <h2 className="text-lg md:text-3xl font-medium text-gray-400">
+              Brand Identity - Event Branding
               </h2>
             </div>
-          </article>
+            </article>
         </Link>
 
         {/* Dior Zine & Solis */}
@@ -190,8 +198,8 @@ export default function Home() {
                 height={600}
               />
               <div className="flex justify-between mt-2">
-                <h2 className="text-3xl font-medium">DIOR ZINE</h2>
-                <h2 className="text-3xl font-medium text-gray-400">
+                <h2 className="text-lg md:text-3xl font-medium">DIOR ZINE</h2>
+                <h2 className="text-lg md:text-3xl font-medium text-gray-400">
                   Editorial
                 </h2>
               </div>
@@ -218,8 +226,8 @@ export default function Home() {
                 }}
               />
               <div className="flex justify-between mt-2">
-                <h2 className="text-3xl font-medium">SOLIS</h2>
-                <h2 className="text-3xl font-medium text-gray-400">
+                <h2 className="text-lg md:text-3xl font-medium">SOLIS</h2>
+                <h2 className="text-lg md:text-3xl font-medium text-gray-400">
                   Packaging - Brand Identity
                 </h2>
               </div>
@@ -252,8 +260,8 @@ export default function Home() {
                 }}
               />
               <div className="flex justify-between p-8 pt-0 mt-0">
-                <h2 className="text-3xl font-medium">SEEWEES</h2>
-                <h2 className="text-3xl font-medium text-gray-400">
+                <h2 className="text-lg md:text-3xl font-medium">SEEWEES</h2>
+                <h2 className="text-lg md:text-3xl font-medium text-gray-400">
                   Packaging - Logo
                 </h2>
               </div>
@@ -289,9 +297,13 @@ export default function Home() {
           </a>
         </div>
         {/* Contact label / info */}
-        <div className="flex justify-between items-center w-full mt-4 ">
+        <div className="flex flex-col md:flex-row justify-between items-center w-full mt-4 ">
           <div className="text-4xl">Contact</div>
-          <div className="flex flex-col items-end gap-2 text-4xl mb-8 mt-16">
+            <div
+            className={`flex flex-col ${
+              isMobile ? "items-center text-center" : "items-end"
+            } gap-2 text-xl md:text-4xl mb-8 mt-16`}
+            >
             <a
               href="mailto:Srijchri@student.arteveldehs.be"
               className="hover:underline"
