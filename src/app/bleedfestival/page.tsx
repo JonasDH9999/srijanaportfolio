@@ -274,7 +274,7 @@ export default function BleedFestival() {
           style={{ objectPosition: "center" }}
           onLoadedData={(e) => {
             const video = e.currentTarget;
-            video.playbackRate = 0.5; // half-speed
+            video.playbackRate = 1; // half-speed
             video.currentTime = 1;
           }}
         />
