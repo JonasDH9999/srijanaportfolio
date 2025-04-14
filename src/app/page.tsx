@@ -62,11 +62,11 @@ export default function Home() {
       {/* Main content area */}
       <main
         id="about"
-        className="min-h-screen flex flex-col mt-12 md:mt-0 justify-around md:justify-end gap-4 sm:gap-8 items-start p-8"
+        className="min-h-screen flex flex-col mt-12 md:mt-0 justify-center md:justify-end gap-4 sm:gap-8 items-start pl-8 pr-8 md:p-8"
         style={{ height: "calc(95vh - 4rem)" }}
       >
         {/* Container with text & image */}
-        <div className="flex flex-col md:flex-row relative w-full ">
+        <div className="flex flex-col md:flex-row relative w-full gap-2 md:gap-0">
           {/* Image section (first in DOM so it appears top-left on mobile) */}
           <motion.div
             initial={{ x: 0, y: 0, opacity: 1 }}
@@ -78,7 +78,7 @@ export default function Home() {
             // On mobile, center the image
             className={`${
               isMobile
-          ? "mx-auto mb-4"
+          ? "mx-auto"
           : "md:absolute md:left-1/2 md:-translate-x-1/2 md:-translate-y-40"
             }`}
           >
