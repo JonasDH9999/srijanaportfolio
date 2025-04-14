@@ -174,9 +174,9 @@ export default function Home() {
               }`}
             >
               <h2 className="text-lg md:text-3xl font-medium">BLEED FESTIVAL</h2>
-              <h2 className="text-lg md:text-3xl font-medium text-gray-400">
-              Brand Identity - Event Branding
-              </h2>
+                <h2 className="text-lg md:text-3xl font-medium text-gray-400">
+                {isMobile ? "Event Branding" : "Brand Identity - Event Branding"}
+                </h2>
             </div>
             </article>
         </Link>
