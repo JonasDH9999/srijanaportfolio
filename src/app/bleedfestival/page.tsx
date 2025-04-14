@@ -141,13 +141,13 @@ export default function BleedFestival() {
         <div className="flex flex-col md:flex-row justify-between w-full p-8 gap-8">
           <motion.video
             src="/videos/bleedfestival/Logos_animation.mp4"
-            className={`object-cover ${isMobile ? "w-full" : "w-1/2"}`}
+            className={`object-cover ${isMobile ? "w-full bg-white" : "w-1/2"}`}
             autoPlay
             loop
             muted
             width={1920}
             height={1080}
-            style={{ objectPosition: "center" }}
+            
             onLoadedData={(e) => {
               const video = e.currentTarget;
               video.playbackRate = 0.2; // Set playback speed to 50% (slower)
@@ -157,9 +157,9 @@ export default function BleedFestival() {
           <Image
             src="/images/bleedfestival/Wristbands.png"
             alt="Bleed Festival Poster"
-            width={540}
-            height={980}
-            className="w-full md:w-1/3 ml-auto mt-2 mb-4"
+            width={1080}
+            height={1920}
+            className="w-full md:w-1/2 ml-auto mt-2 mb-4"
           />
         </div>
         <motion.video
