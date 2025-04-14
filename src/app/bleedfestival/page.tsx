@@ -30,7 +30,7 @@ export default function BleedFestival() {
     const handleScroll = () => {
       const mainSectionHeight =
         document.querySelector("main")?.offsetHeight || 0;
-      setIsScrolled(window.scrollY > mainSectionHeight);
+      setIsScrolled(window.scrollY > mainSectionHeight * 0.7); // Trigger a bit sooner
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -38,7 +38,7 @@ export default function BleedFestival() {
   }, []);
 
   return (
-    <div>
+    <div id="top" className="w-full overflow-x-hidden flex flex-col">
       <main
         className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-between p-0 m-0"
         style={{
@@ -75,21 +75,22 @@ export default function BleedFestival() {
         </div>
       </main>
 
-      <section className="mt-80">
-        <h2 className="md:text-5xl font-medium mb-4 text-lg text-center md:text-left pl-8">
+      {/* Intro Section */}
+      <section className="mt-12 md:mt-80">
+        <h2 className="md:text-5xl font-medium mb-4 text-xl text-center md:text-left md:pl-8">
           Bleed Festival
         </h2>
-        <div className="p-8 flex flex-row w-full">
-          <div className="w-1/2">
-            <ul className="space-y-2 md:text-4xl font-medium text-lg text-center md:text-left">
+        <div className="pl-2 pr-2 md:p-8 flex flex-col md:flex-row w-full">
+          <div className="w-full md:w-1/2">
+            <ul className="md:space-y-2 md:text-4xl font-medium text-lg text-center md:text-left">
               <li>Brand identity</li>
               <li>Graphic Design</li>
               <li>Digital Content</li>
               <li>Event Branding</li>
             </ul>
           </div>
-          <div className="w-1/2">
-            <p className="md:text-3xl font-medium mb-2 text-md text-center md:text-left">
+          <div className="w-full md:w-1/2">
+            <p className="md:text-3xl font-medium mb-2 text-md text-center md:text-left mt-2 md:mt-0 p-8 md:p-0">
               As part of my graphic design studies, I developed the branding for
               BLEED, a fictional festival that focuses on fashion and
               technology. The project aimed to create a visual identity that
@@ -99,7 +100,8 @@ export default function BleedFestival() {
         </div>
       </section>
 
-      <section className="mb-80">
+      {/* Logos / Flags Section */}
+      <section className="mb-12 md:mb-80">
         <Image
           src="/images/bleedfestival/BleedLogo.png"
           alt="Bleed Festival Logo"
@@ -113,20 +115,21 @@ export default function BleedFestival() {
             alt="Bleed Festival Logo"
             width={1920}
             height={1080}
-            className="w-1/2 p-8"
+            className="w-full md:w-1/2 p-8"
           />
           <Image
             src="/images/bleedfestival/Flag_white.png"
             alt="Bleed Festival Logo"
             width={1920}
             height={1080}
-            className="w-1/2 p-8"
+            className="w-full md:w-1/2 p-8"
           />
         </div>
       </section>
 
+      {/* Dynamic Moving Logo Section */}
       <section className="mb-20">
-        <div className="w-2/5 p-8">
+        <div className="w-full md:w-2/5 p-8">
           <p className="md:text-3xl font-medium mb-2 text-md text-center md:text-left">
             For this project, I created a dynamic ‘moving’ logo and a full range
             of brand applications, including posters, social media graphics,
@@ -156,7 +159,7 @@ export default function BleedFestival() {
             alt="Bleed Festival Poster"
             width={540}
             height={980}
-            className="w-1/3 ml-auto mt-2 mb-4 "
+            className="w-full md:w-1/3 ml-auto mt-2 mb-4"
           />
         </div>
         <motion.video
@@ -172,14 +175,15 @@ export default function BleedFestival() {
           style={{ objectPosition: "center" }}
           onLoadedData={(e) => {
             const video = e.currentTarget;
-            video.playbackRate = 0.5; // Set playback speed to 50% (slower)
+            video.playbackRate = 0.5; // 50% speed
             video.currentTime = 1;
           }}
         />
       </section>
 
+      {/* Wristbands Section */}
       <section>
-        <div className="w-4/9 ml-auto pr-10">
+        <div className="w-full md:w-4/9 ml-2 md:ml-auto pr-10">
           <p className="md:text-3xl font-medium mb-2 text-md text-justify">
             The main challenge for this project was combining three different
             themes into one cohesive visual style. I didn’t want the design to
@@ -190,7 +194,7 @@ export default function BleedFestival() {
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-4" id="wristbands">
-            {[
+          {[  
             {
               src: "/images/bleedfestival/Official wristbands speaker.png",
               alt: "Bleed Festival Poster Speaker",
@@ -206,14 +210,14 @@ export default function BleedFestival() {
               alt: "Bleed Festival Poster Staff",
               initialX: "-40%",
             },
-            ].map((item, index) => (
+          ].map((item, index) => (
             <motion.div
               key={index}
               initial={{ x: item.initialX }}
               whileInView={{ x: 0 }}
               transition={{ duration: 1.8 }}
               viewport={{ once: false, amount: 0.2 }}
-              className="w-full"
+              className={`w-full ${isMobile ? "scale-120" : ""}`}
             >
               <Image
               src={item.src}
@@ -223,44 +227,46 @@ export default function BleedFestival() {
               className="w-full ml-auto mt-2 mb-4"
               />
             </motion.div>
-            ))}
+          ))}
         </div>
       </section>
 
-      <section className="mt-60">
-        <div className="mt-8 w-1/2 mr-auto p-8">
+      {/* Festival Poster Section */}
+      <section className="mt-12 md:mt-60">
+        <div className="mt-8 w-full md:w-1/2 mr-auto p-8">
           <Image
             src="/images/bleedfestival/Festival_1.png"
             alt="Bleed Festival Poster"
             width={1920}
             height={1080}
-            className="w-full mt-2 mb-4 "
+            className="w-full mt-2 mb-4"
           />
           <Image
             src="/images/bleedfestival/Festival_2.png"
             alt="Bleed Festival Poster"
             width={1920}
             height={1080}
-            className="w-full ml-auto mt-2 mb-4 "
+            className="w-full ml-auto mt-2 mb-4"
           />
           <Image
             src="/images/bleedfestival/Festival_3.png"
             alt="Bleed Festival Poster"
             width={1920}
             height={1080}
-            className="w-full ml-auto mt-2 mb-4 "
+            className="w-full ml-auto mt-2 mb-4"
           />
           <Image
             src="/images/bleedfestival/Festival_4.png"
             alt="Bleed Festival Poster"
             width={1920}
             height={1080}
-            className="w-full ml-auto mt-2 mb-4 "
+            className="w-full ml-auto mt-2 mb-4"
           />
         </div>
       </section>
 
-      <section className="mt-60 mb-60">
+      {/* Social Media Stories Video */}
+      <section className="mt-12 md:mt-60 mb-12 md:mb-60">
         <motion.video
           src="/videos/bleedfestival/Social_media_stories.mp4"
           className={`object-cover ${
@@ -274,7 +280,7 @@ export default function BleedFestival() {
           style={{ objectPosition: "center" }}
           onLoadedData={(e) => {
             const video = e.currentTarget;
-            video.playbackRate = 1; // half-speed
+            video.playbackRate = 1; 
             video.currentTime = 1;
           }}
         />
