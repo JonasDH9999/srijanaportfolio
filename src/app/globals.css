@@ -130,3 +130,15 @@ body {
   font-weight: 400; /* normal by default */
   margin: 0; /* remove default margin */
 }
+
+/* ===============================
+  4) Smooth Scrolling 
+=============================== */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 0; /* Adjust if you have a fixed header */
+}
+
+:root {
+  --scroll-duration: 5000ms; /* Adjust duration as needed */
+}
