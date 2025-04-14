@@ -120,7 +120,7 @@ export default function Home() {
           className={`${isMobile ? "w-full flex justify-center" : ""}`}
         >
           <motion.div
-            className={`mt-4 text-gray-500 text-2xl flex items-center ${
+            className={`mt-0 md:mt-4 text-gray-500 text-2xl flex items-center ${
               isMobile ? "w-full text-center justify-center" : "justify-start"
             } mb-4 font-medium`}
             animate={{ opacity: [1, 0.8, 1], scale: [1, 1.1, 1] }}
