@@ -69,17 +69,15 @@ export default function Home() {
         <div className="flex flex-col md:flex-row relative w-full gap-2 md:gap-0">
           {/* Image section (first in DOM so it appears top-left on mobile) */}
           <motion.div
-            initial={{ x: 0, y: 0, opacity: 1 }}
-            // On mobile, x=0 so it doesn’t fly off-screen
-            // On desktop, x=640 as before
-            animate={isMobile ? { x: 0, opacity: 1 } : { x: 640, opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            // Only absolute-positioned on md+ (desktop)
-            // On mobile, center the image
+            // On desktop, normal initial & animate
+            // On mobile, empty objects = no motion
+            initial={isMobile ? {} : { x: 0, y: 0, opacity: 1 }}
+            animate={isMobile ? {} : { x: 640, opacity: 1 }}
+            transition={isMobile ? {} : { duration: 1, delay: 1 }}
             className={`${
               isMobile
-          ? "mx-auto"
-          : "md:absolute md:left-1/2 md:-translate-x-1/2 md:-translate-y-40"
+                ? "mx-auto z-5"
+                : "md:absolute md:left-1/2 md:-translate-x-1/2 md:-translate-y-40 z-5"
             }`}
           >
             <Image
@@ -91,16 +89,13 @@ export default function Home() {
             />
           </motion.div>
 
-          {/* Text section (second in DOM so it wraps around floated image on mobile) */}
+          {/* Text section (second in DOM) */}
           <motion.div
-            initial={{ x: 0, y: 0, opacity: 1 }}
-            // Simpler animation on mobile; your original big upward shift on desktop
-            animate={
-              isMobile
-                ? { x: 0, y: 0, opacity: 1 }
-                : { x: 0, y: -350, opacity: 1 }
-            }
-            transition={{ duration: 1, delay: 1 }}
+            // On desktop, your original upward shift
+            // On mobile, no animation
+            initial={isMobile ? {} : { x: 0, y: 0, opacity: 1 }}
+            animate={isMobile ? {} : { x: 0, y: -350, opacity: 1 }}
+            transition={isMobile ? {} : { duration: 1, delay: 1 }}
             className={`flex-1 flex flex-col justify-center ${
               isMobile ? "max-w-full" : "max-w-[65%]"
             }`}
@@ -148,37 +143,39 @@ export default function Home() {
       {/* Projects Section */}
       <section id="projects">
         <Link href="/bleedfestival">
-            <article
+          <article
             className={`w-full flex flex-col  cursor-pointer ${
               isMobile ? "p-0 mb-14" : "pb-0 mb-24"
             }`}
             id="bleed"
-            >
+          >
             <motion.video
               src="/videos/home/Bleed_animation_homepage.mp4"
-              className={`object-contain ${
-              isMobile ? "w-full" : "p-8 pb-2"
-              }`}
+              className={`object-contain ${isMobile ? "w-full" : "p-8 pb-2"}`}
               autoPlay
               loop
               muted
               style={{ objectPosition: "center" }}
               onLoadedData={(e) => {
-              const video = e.currentTarget;
-              video.currentTime = 1;
+                const video = e.currentTarget;
+                video.currentTime = 1;
               }}
             />
             <div
               className={`flex justify-between ${
-              isMobile ? "p-4" : "p-8 pt-0 mt-0"
+                isMobile ? "p-4" : "p-8 pt-0 mt-0"
               }`}
             >
-              <h2 className="text-lg md:text-3xl font-medium">BLEED FESTIVAL</h2>
-                <h2 className="text-lg md:text-3xl font-medium text-gray-400">
-                {isMobile ? "Event Branding" : "Brand Identity - Event Branding"}
-                </h2>
+              <h2 className="text-lg md:text-3xl font-medium">
+                BLEED FESTIVAL
+              </h2>
+              <h2 className="text-lg md:text-3xl font-medium text-gray-400">
+                {isMobile
+                  ? "Event Branding"
+                  : "Brand Identity - Event Branding"}
+              </h2>
             </div>
-            </article>
+          </article>
         </Link>
 
         {/* Dior Zine & Solis */}
@@ -299,11 +296,11 @@ export default function Home() {
         {/* Contact label / info */}
         <div className="flex flex-col md:flex-row justify-between items-center w-full mt-4 ">
           <div className="text-4xl">Contact</div>
-            <div
+          <div
             className={`flex flex-col ${
               isMobile ? "items-center text-center" : "items-end"
             } gap-2 text-xl md:text-4xl mb-8 mt-16`}
-            >
+          >
             <a
               href="mailto:Srijchri@student.arteveldehs.be"
               className="hover:underline"
