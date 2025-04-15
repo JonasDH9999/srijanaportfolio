@@ -21,7 +21,13 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-function FadeInSection({ children, delayClass = "" }: { children: React.ReactNode; delayClass?: string }) {
+function FadeInSection({
+  children,
+  delayClass = "",
+}: {
+  children: React.ReactNode;
+  delayClass?: string;
+}) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -58,17 +64,6 @@ function FadeInSection({ children, delayClass = "" }: { children: React.ReactNod
 }
 
 export default function Home() {
-  // On page load/refresh, remove any URL hash and scroll to top
-  useEffect(() => {
-    if (typeof window !== "undefined" && window.location.hash) {
-      window.history.replaceState(
-        {},
-        document.title,
-        window.location.pathname + window.location.search
-      );
-      window.scrollTo(0, 0);
-    }
-  }, []);
 
   // -------------- NEW: Curtains scroll logic --------------
   useEffect(() => {
@@ -133,33 +128,83 @@ export default function Home() {
 
       {/* Main content area */}
       {/* Main content area */}
+      {/* Main content area */}
       <main
         id="about"
-        className="min-h-screen flex flex-col mt-12 md:mt-35 justify-start md:justify-start items-start"
+        className="
+    min-h-screen 
+    flex 
+    flex-col 
+    mt-12 
+    md:mt-35 
+    justify-start 
+    md:justify-start 
+    items-start
+  "
         style={{ height: "calc(95vh - 4rem)" }}
       >
+        {/* BUILDING BRIDGES */}
         <div className="w-full mx-auto flex justify-center">
-          {/* 1) BUILDING BRIDGES / BETWEEN */}
           <div className="overflow-hidden">
-            <div className="text-[9rem] font-medium tracking-wider leading-tight slide-up">
+            {/* 
+        For mobile: text-[3rem]
+        For desktop: text-[9rem] (original)
+      */}
+            <div
+              className="
+        text-[3rem] 
+        md:text-[9rem] 
+        font-medium 
+        tracking-wider 
+        leading-tight 
+        slide-up
+      "
+            >
               <span>BUILDING</span>
               <span>&nbsp;BRIDGES</span>
             </div>
           </div>
         </div>
-        <div className="overflow-hidden w-full ml-25">
-          <div className="text-[9rem] font-medium tracking-wider leading-tight slide-up delay-1">
+
+        {/* BETWEEN */}
+        <div className="overflow-hidden w-full ml-0 md:ml-25">
+          <div
+            className="
+      text-[3rem] 
+      md:text-[9rem] 
+      font-medium 
+      tracking-wider 
+      leading-tight 
+      slide-up 
+      delay-1
+    "
+          >
             <span className="underline underline-offset-0 decoration-blue-500 decoration-1">
               BETWEEN
             </span>
           </div>
         </div>
 
-        <div className="flex flex-row gap-12 mx-auto">
-          <div className="flex flex-col gap-4 items-start justify-start w-1/2">
-            {/* 2) Paragraph with "I am Srijana..." */}
+        {/* Wrap row in flex-col for mobile, row for desktop */}
+        <div className="flex flex-col md:flex-row gap-12 mx-auto">
+          <div className="flex flex-col gap-4 items-start justify-start w-full md:w-1/2">
+            {/* "I am Srijana..." paragraph */}
             <div className="overflow-hidden">
-              <div className="ml-25 mt-8 text-[1.8rem] slide-up delay-2">
+              {/* 
+          For mobile: text-[1.2rem] (or so)
+          For desktop: text-[1.8rem] (original)
+        */}
+              <div
+                className="
+          ml-0 
+          md:ml-25 
+          mt-8 
+          text-[1.2rem] 
+          md:text-[1.8rem] 
+          slide-up 
+          delay-2
+        "
+              >
                 <span className="w-full inline-flex justify-end">
                   I am Srijana, a graphic design student
                   and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -172,7 +217,7 @@ export default function Home() {
             </div>
 
             {/* Unchanged image */}
-            <div className="ml-25 slide-up delay-2">
+            <div className="ml-0 md:ml-25 slide-up delay-2">
               <Image
                 src="/images/home/nFXwF.png"
                 alt="Arrow Down"
@@ -184,18 +229,42 @@ export default function Home() {
           </div>
 
           <div>
-            {/* 3) STORIES & DESIGN */}
+            {/* STORIES & DESIGN */}
+            {/* 
+        For mobile: text-[4rem] or [5rem] 
+        For desktop: text-[9rem] and [9.5rem] (original)
+      */}
             <div
-              className="w-2/2 text-[9rem] font-medium tracking-wider leading-tight italic"
+              className="
+          w-full 
+          md:w-2/2 
+          text-[4rem] 
+          md:text-[9rem] 
+          font-medium 
+          tracking-wider 
+          leading-tight 
+          italic
+        "
               style={{ transform: "translateY(-20px)" }}
             >
-              {/* Wrap each line in overflow-hidden so the text slides up cleanly */}
               <div className="overflow-hidden">
                 <div className="slide-up delay-3">
-                  <span className="text-[9.5rem]">
+                  <span
+                    className="
+              text-[4.5rem] 
+              md:text-[9.5rem]
+            "
+                  >
                     STORIES
                     <br />
-                    <span className="text-[8.5rem]">& DESIGN</span>
+                    <span
+                      className="
+                text-[3.5rem] 
+                md:text-[8.5rem]
+              "
+                    >
+                      &nbsp; & DESIGN
+                    </span>
                   </span>
                 </div>
               </div>
@@ -314,26 +383,26 @@ export default function Home() {
             className="w-full md:w-[60%] md:ml-44 md:mt-120"
           >
             <FadeInSection delayClass="delay-0">
-            <article className="cursor-pointer p-4">
-              <motion.video
-                src="/videos/home/Solis_animation_homepage.mp4"
-                className="w-full object-contain"
-                autoPlay
-                loop
-                muted
-                style={{ objectPosition: "center" }}
-                onLoadedData={(e) => {
-                  const video = e.currentTarget;
-                  video.currentTime = 1;
-                }}
-              />
-              <div className="flex justify-between mt-2">
-                <h2 className="text-lg md:text-3xl font-medium">SOLIS</h2>
-                <h2 className="text-lg md:text-3xl font-medium text-gray-400">
-                  Packaging - Brand Identity
-                </h2>
-              </div>
-            </article>
+              <article className="cursor-pointer p-4">
+                <motion.video
+                  src="/videos/home/Solis_animation_homepage.mp4"
+                  className="w-full object-contain"
+                  autoPlay
+                  loop
+                  muted
+                  style={{ objectPosition: "center" }}
+                  onLoadedData={(e) => {
+                    const video = e.currentTarget;
+                    video.currentTime = 1;
+                  }}
+                />
+                <div className="flex justify-between mt-2">
+                  <h2 className="text-lg md:text-3xl font-medium">SOLIS</h2>
+                  <h2 className="text-lg md:text-3xl font-medium text-gray-400">
+                    Packaging - Brand Identity
+                  </h2>
+                </div>
+              </article>
             </FadeInSection>
           </Link>
         </div>
@@ -347,29 +416,29 @@ export default function Home() {
             className="w-full md:w-[60%] md:ml-auto mb-24"
           >
             <FadeInSection delayClass="delay-0">
-            <article
-              className="pb-0 flex flex-col mb-0 cursor-pointer"
-              id="bleed"
-            >
-              <motion.video
-                src="/videos/seewees/Animation2Chilli.mp4"
-                className="object-contain p-8 pb-2"
-                autoPlay
-                loop
-                muted
-                style={{ objectPosition: "center" }}
-                onLoadedData={(e) => {
-                  const video = e.currentTarget;
-                  video.currentTime = 1;
-                }}
-              />
-              <div className="flex justify-between p-8 pt-0 mt-0">
-                <h2 className="text-lg md:text-3xl font-medium">SEEWEES</h2>
-                <h2 className="text-lg md:text-3xl font-medium text-gray-400">
-                  Packaging - Logo
-                </h2>
-              </div>
-            </article>
+              <article
+                className="pb-0 flex flex-col mb-0 cursor-pointer"
+                id="bleed"
+              >
+                <motion.video
+                  src="/videos/seewees/Animation2Chilli.mp4"
+                  className="object-contain p-8 pb-2"
+                  autoPlay
+                  loop
+                  muted
+                  style={{ objectPosition: "center" }}
+                  onLoadedData={(e) => {
+                    const video = e.currentTarget;
+                    video.currentTime = 1;
+                  }}
+                />
+                <div className="flex justify-between p-8 pt-0 mt-0">
+                  <h2 className="text-lg md:text-3xl font-medium">SEEWEES</h2>
+                  <h2 className="text-lg md:text-3xl font-medium text-gray-400">
+                    Packaging - Logo
+                  </h2>
+                </div>
+              </article>
             </FadeInSection>
           </Link>
         </div>

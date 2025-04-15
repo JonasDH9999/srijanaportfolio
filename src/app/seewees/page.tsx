@@ -44,7 +44,7 @@ export default function Seewees() {
       <main
         className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-between p-0 m-0 relative"
         style={{
-          backgroundImage: "url('/images/seewees/Hero.png')",
+          backgroundImage: "url('/images/seewees/Hero.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

@@ -44,7 +44,7 @@ export default function Solis() {
       <main
         className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-between p-0 m-0 relative"
         style={{
-          backgroundImage: "url('/images/solis/SolisHero.png')",
+          backgroundImage: "url('/images/solis/SolisHero.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

@@ -42,7 +42,7 @@ export default function BleedFestival() {
       <main
         className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-between p-0 m-0"
         style={{
-          backgroundImage: "url('/images/bleedfestival/Hero_Poster.png')",
+          backgroundImage: "url('/images/bleedfestival/Hero_Poster.webp')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -232,41 +232,21 @@ export default function BleedFestival() {
       </section>
 
       {/* Festival Poster Section */}
-      <section className="mt-12 md:mt-60">
+      <section className="mt-12 md:mt-20">
         <div className="mt-8 w-full md:w-1/2 mr-auto p-8">
           <Image
-            src="/images/bleedfestival/Festival_1.png"
+            src="/images/bleedfestival/socialmedia.png"
             alt="Bleed Festival Poster"
             width={1920}
             height={1080}
-            className="w-full mt-2 mb-4"
+            className="w-full mt-2 mb-0"
           />
-          <Image
-            src="/images/bleedfestival/Festival_2.png"
-            alt="Bleed Festival Poster"
-            width={1920}
-            height={1080}
-            className="w-full ml-auto mt-2 mb-4"
-          />
-          <Image
-            src="/images/bleedfestival/Festival_3.png"
-            alt="Bleed Festival Poster"
-            width={1920}
-            height={1080}
-            className="w-full ml-auto mt-2 mb-4"
-          />
-          <Image
-            src="/images/bleedfestival/Festival_4.png"
-            alt="Bleed Festival Poster"
-            width={1920}
-            height={1080}
-            className="w-full ml-auto mt-2 mb-4"
-          />
+          
         </div>
       </section>
 
       {/* Social Media Stories Video */}
-      <section className="mt-12 md:mt-60 mb-12 md:mb-60">
+      <section className="mt-12 md:mt-0 mb-12 md:mb-60">
         <motion.video
           src="/videos/bleedfestival/Social_media_stories.mp4"
           className={`object-cover ${
