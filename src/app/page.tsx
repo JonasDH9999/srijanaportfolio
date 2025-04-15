@@ -263,7 +263,7 @@ export default function Home() {
                 md:text-[8.5rem]
               "
                     >
-                      &nbsp; & DESIGN
+                    & DESIGN
                     </span>
                   </span>
                 </div>
