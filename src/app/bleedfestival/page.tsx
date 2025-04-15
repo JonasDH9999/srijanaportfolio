@@ -327,7 +327,7 @@ export default function BleedFestival() {
               Srijchri@student.arteveldehs.be
             </a>
             <a href="tel:+3293329241" className="hover:underline">
-              +32 93 32 92 41
+              +32 483 32 92 41
             </a>
           </div>
         </div>

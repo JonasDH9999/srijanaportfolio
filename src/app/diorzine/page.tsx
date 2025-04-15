@@ -384,7 +384,11 @@ export default function DiorZine() {
               stroke="currentColor"
               className="h-8 w-8"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 15l7-7 7 7"
+              />
             </svg>
           </a>
         </div>
@@ -403,7 +407,7 @@ export default function DiorZine() {
               Srijchri@student.arteveldehs.be
             </a>
             <a href="tel:+3293329241" className="hover:underline">
-              +32 93 32 92 41
+              +32 483 32 92 41
             </a>
           </div>
         </div>

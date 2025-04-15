@@ -290,45 +290,47 @@ export default function Solis() {
           </div>
 
           {/* Some_products.png & Aftersunlotion2.png */}
-            <div
+          <div
             className="flex flex-col md:flex-row md:ml-8 mt-4 md:mr-6 justify-between gap-4 md:gap-0 z-50"
             style={{
               transform: isMobile ? "none" : "translateY(-150px)",
             }}
-            >
+          >
             {/* Left column: Some_products.png */}
             <div className="w-full md:w-1/2">
               <div className="h-full">
-              <Image
-                src="/images/solis/Some_products.png"
-                alt="Some Products"
-                width={1920}
-                height={1080}
-                className={`object-cover ${
-                isMobile ? "w-full bg-white pl-8 pr-8" : "ml-8 w-2/3 scale-110"
-                }`}
-              />
+                <Image
+                  src="/images/solis/Some_products.png"
+                  alt="Some Products"
+                  width={1920}
+                  height={1080}
+                  className={`object-cover ${
+                    isMobile
+                      ? "w-full bg-white pl-8 pr-8"
+                      : "ml-8 w-2/3 scale-110"
+                  }`}
+                />
               </div>
             </div>
             {/* Right column: Aftersunlotion2.png */}
             <div className="w-full md:w-1/2 mb-20">
               <div
-              style={{
-                transform: isMobile ? "none" : "translateX(-150px)",
-              }}
+                style={{
+                  transform: isMobile ? "none" : "translateX(-150px)",
+                }}
               >
-              <Image
-                src="/images/solis/Aftersunlotion2.png"
-                alt="After Sun Lotion"
-                width={1920}
-                height={1080}
-                className={`object-cover ${
-                isMobile ? "w-full bg-white pl-8 pr-8" : "w-2/3 scale-110"
-                }`}
-              />
+                <Image
+                  src="/images/solis/Aftersunlotion2.png"
+                  alt="After Sun Lotion"
+                  width={1920}
+                  height={1080}
+                  className={`object-cover ${
+                    isMobile ? "w-full bg-white pl-8 pr-8" : "w-2/3 scale-110"
+                  }`}
+                />
               </div>
             </div>
-            </div>
+          </div>
         </section>
       </section>
 
@@ -350,7 +352,11 @@ export default function Solis() {
               stroke="currentColor"
               className="h-8 w-8"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M5 15l7-7 7 7"
+              />
             </svg>
           </a>
         </div>
@@ -369,7 +375,7 @@ export default function Solis() {
               Srijchri@student.arteveldehs.be
             </a>
             <a href="tel:+3293329241" className="hover:underline">
-              +32 93 32 92 41
+              +32 483 32 92 41
             </a>
           </div>
         </div>

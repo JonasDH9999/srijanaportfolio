@@ -142,3 +142,72 @@ html {
 :root {
   --scroll-duration: 5000ms; /* Adjust duration as needed */
 }
+
+/* The base slide-up animation */
+.slide-up {
+  animation: slide-up 0.85s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+/* Use the 'element has both classes' selector: .slide-up.delay-1 */
+.slide-up.delay-0 {
+  animation-delay: 0s;
+}
+.slide-up.delay-1 {
+  animation-delay: 0.5s;
+}
+.slide-up.delay-2 {
+  animation-delay: 0.7s;
+}
+.slide-up.delay-3 {
+  animation-delay: 1s;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(350px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.fade-slide-up {
+  animation: fade-slide-up 1s cubic-bezier(0.65, 0, 0.35, 1) both;
+}
+
+.fade-slide-up.delay-0 {
+  animation-delay: 0.5s;
+}
+
+.fade-slide-up.delay-1 {
+  animation-delay: 0.7s;
+}
+
+.fade-slide-up.delay-2 {
+  animation-delay: 1.0s;
+}
+
+/* Always hide + shift each element at first */
+.fade-slide-up-base {
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 0.85s cubic-bezier(0.65, 0, 0.35, 1), 
+              transform 0.85s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.fade-slide-up-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fade-slide-up {
+  0% {
+    transform: translateY(350px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+

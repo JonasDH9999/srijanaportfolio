@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,6 +21,42 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
+function FadeInSection({ children, delayClass = "" }) {
+  const ref = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      // 1) Always have .fade-slide-up-base to start hidden
+      // 2) If isVisible => also add .fade-slide-up-visible
+      // 3) If you want a delay, add that class too
+      className={`overflow-hidden fade-slide-up-base ${
+        isVisible ? `fade-slide-up-visible ${delayClass}` : ""
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
 export default function Home() {
   // On page load/refresh, remove any URL hash and scroll to top
   useEffect(() => {
@@ -32,6 +68,42 @@ export default function Home() {
       );
       window.scrollTo(0, 0);
     }
+  }, []);
+
+  // -------------- NEW: Curtains scroll logic --------------
+  useEffect(() => {
+    const SCROLL_START = 0; // Where curtains start opening
+    const SCROLL_END = 1500; // Where curtains are fully open
+    const MAX_TRANSLATE = 500; // How many px each curtain slides outward
+
+    function handleScroll() {
+      const scrollY = window.scrollY;
+
+      // progress from 0..1
+      const progress = Math.min(
+        Math.max((scrollY - SCROLL_START) / (SCROLL_END - SCROLL_START), 0),
+        1
+      );
+
+      const translateAmount = progress * MAX_TRANSLATE;
+
+      const leftCurtain = document.querySelector(".curtain-left");
+      const rightCurtain = document.querySelector(".curtain-right");
+
+      if (leftCurtain && rightCurtain) {
+        (
+          leftCurtain as HTMLElement
+        ).style.transform = `translateX(-${translateAmount}px)`;
+        (
+          rightCurtain as HTMLElement
+        ).style.transform = `translateX(${translateAmount}px)`;
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   // Detect if we're on a mobile screen
@@ -60,123 +132,153 @@ export default function Home() {
       </div>
 
       {/* Main content area */}
+      {/* Main content area */}
       <main
         id="about"
-        className="min-h-screen flex flex-col mt-12 md:mt-0 justify-center md:justify-end gap-4 sm:gap-8 items-start pl-8 pr-8 md:p-8"
+        className="min-h-screen flex flex-col mt-12 md:mt-35 justify-start md:justify-start items-start"
         style={{ height: "calc(95vh - 4rem)" }}
       >
-        {/* Container with text & image */}
-        <div className="flex flex-col md:flex-row relative w-full gap-2 md:gap-0">
-          {/* Image section (first in DOM so it appears top-left on mobile) */}
-          <motion.div
-            // On desktop, normal initial & animate
-            // On mobile, empty objects = no motion
-            initial={isMobile ? {} : { x: 0, y: 0, opacity: 1 }}
-            animate={isMobile ? {} : { x: 640, opacity: 1 }}
-            transition={isMobile ? {} : { duration: 1, delay: 1 }}
-            className={`${
-              isMobile
-                ? "mx-auto z-5"
-                : "md:absolute md:left-1/2 md:-translate-x-1/2 md:-translate-y-40 z-5"
-            }`}
-          >
-            <Image
-              src="/images/home/srijana.png"
-              width={isMobile ? 200 : 300}
-              height={isMobile ? 200 : 300}
-              alt="Srijana"
-              className="object-cover rounded shadow-lg"
-            />
-          </motion.div>
-
-          {/* Text section (second in DOM) */}
-          <motion.div
-            // On desktop, your original upward shift
-            // On mobile, no animation
-            initial={isMobile ? {} : { x: 0, y: 0, opacity: 1 }}
-            animate={isMobile ? {} : { x: 0, y: -350, opacity: 1 }}
-            transition={isMobile ? {} : { duration: 1, delay: 1 }}
-            className={`flex-1 flex flex-col justify-center ${
-              isMobile ? "max-w-full" : "max-w-[65%]"
-            }`}
-          >
-            <h2 className="md:text-3xl font-medium mb-2 text-lg text-center md:text-left">
-              I am Srijana, a graphic design student &amp; freelancer based in
-              Belgium. I turn ideas into visuals that tell a story. Whether it’s
-              a logo, branding, UX design, or any other creative project, I
-              infuse every creation with meaning and emotion.
-            </h2>
-          </motion.div>
+        <div className="w-full mx-auto flex justify-center">
+          {/* 1) BUILDING BRIDGES / BETWEEN */}
+          <div className="overflow-hidden">
+            <div className="text-[9rem] font-medium tracking-wider leading-tight slide-up">
+              <span>BUILDING</span>
+              <span>&nbsp;BRIDGES</span>
+            </div>
+          </div>
+        </div>
+        <div className="overflow-hidden w-full ml-25">
+          <div className="text-[9rem] font-medium tracking-wider leading-tight slide-up delay-1">
+            <span className="underline underline-offset-0 decoration-blue-500 decoration-1">
+              BETWEEN
+            </span>
+          </div>
         </div>
 
-        {/* Scroll prompt */}
-        <Link
-          href="#projects"
-          className={`${isMobile ? "w-full flex justify-center" : ""}`}
-        >
-          <motion.div
-            className={`mt-0 md:mt-4 text-gray-500 text-2xl flex items-center ${
-              isMobile ? "w-full text-center justify-center" : "justify-start"
-            } mb-4 font-medium`}
-            animate={{ opacity: [1, 0.8, 1], scale: [1, 1.1, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="mr-2 h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 9l-7 7-7-7"
+        <div className="flex flex-row gap-12 mx-auto">
+          <div className="flex flex-col gap-4 items-start justify-start w-1/2">
+            {/* 2) Paragraph with "I am Srijana..." */}
+            <div className="overflow-hidden">
+              <div className="ml-25 mt-8 text-[1.8rem] slide-up delay-2">
+                <span className="w-full inline-flex justify-end">
+                  I am Srijana, a graphic design student
+                  and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </span>
+                freelancer based in Belgium. I turn ideas into visuals that tell
+                a story. Whether it&#39;s a logo, brand identity, UI/UX design,
+                or any other creative project, I design with meaning and
+                emotion.
+              </div>
+            </div>
+
+            {/* Unchanged image */}
+            <div className="ml-25 slide-up delay-2">
+              <Image
+                src="/images/home/nFXwF.png"
+                alt="Arrow Down"
+                width={60}
+                height={60}
+                className="object-contain multiply-white"
               />
-            </svg>
-            scroll for projects
-          </motion.div>
-        </Link>
+            </div>
+          </div>
+
+          <div>
+            {/* 3) STORIES & DESIGN */}
+            <div
+              className="w-2/2 text-[9rem] font-medium tracking-wider leading-tight italic"
+              style={{ transform: "translateY(-20px)" }}
+            >
+              {/* Wrap each line in overflow-hidden so the text slides up cleanly */}
+              <div className="overflow-hidden">
+                <div className="slide-up delay-3">
+                  <span className="text-[9.5rem]">
+                    STORIES
+                    <br />
+                    <span className="text-[8.5rem]">& DESIGN</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
 
       {/* Projects Section */}
       <section id="projects">
+        {/* ---------- Bleed Festival with the new curtains ---------- */}
         <Link href="/bleedfestival">
           <article
-            className={`w-full flex flex-col  cursor-pointer ${
-              isMobile ? "p-0 mb-14" : "pb-0 mb-24"
+            className={`w-full flex flex-col cursor-pointer ${
+              isMobile ? "p-0 mb-14" : "pb-0 mb-0"
             }`}
             id="bleed"
           >
-            <motion.video
-              src="/videos/home/Bleed_animation_homepage.mp4"
-              className={`object-contain ${isMobile ? "w-full" : "p-8 pb-2"}`}
-              autoPlay
-              loop
-              muted
-              style={{ objectPosition: "center" }}
-              onLoadedData={(e) => {
-                const video = e.currentTarget;
-                video.currentTime = 1;
-              }}
-            />
             <div
-              className={`flex justify-between ${
-                isMobile ? "p-4" : "p-8 pt-0 mt-0"
-              }`}
+              id="curtains"
+              className="relative w-full "
+              // Use min-h if you want to ensure enough vertical space for the effect
+              // style={{ minHeight: "70vh" }}
             >
-              <h2 className="text-lg md:text-3xl font-medium">
-                BLEED FESTIVAL
-              </h2>
-              <h2 className="text-lg md:text-3xl font-medium text-gray-400">
-                {isMobile
-                  ? "Event Branding"
-                  : "Brand Identity - Event Branding"}
-              </h2>
+              {/* LEFT CURTAIN */}
+              <div
+                className="curtain-left absolute bottom-50 w-[15%] bg-white z-50 h-full"
+                style={{
+                  left: 0,
+                  transform: isMobile ? undefined : "translateY(-50px)",
+                  transition: "transform 0.7s linear",
+                }}
+              ></div>
+
+              {/* RIGHT CURTAIN */}
+              <div
+                className="curtain-right absolute bottom-50 w-[15%] bg-white z-50 h-full"
+                style={{
+                  right: 0,
+                  transform: isMobile ? undefined : "translateY(-50px)",
+                  transition: "transform 1s linear",
+                }}
+              ></div>
+
+              {/* The video (no longer using `motion.video`) */}
+              <video
+                src="/videos/home/Bleed_animation_homepage.mp4"
+                className={`object-contain ${isMobile ? "w-full" : "p-8 pb-2"}`}
+                autoPlay
+                loop
+                muted
+                style={{
+                  objectPosition: "center",
+                  transform: isMobile ? undefined : "translateY(-200px)",
+                }}
+                onLoadedData={(e) => {
+                  const video = e.currentTarget;
+                  video.currentTime = 1;
+                }}
+              />
+
+              {/* Headings */}
+              <div
+                className={`flex justify-between ${
+                  isMobile ? "p-4" : "p-8 pt-0 mt-0"
+                }`}
+                style={{
+                  transform: isMobile ? undefined : "translateY(-200px)",
+                }}
+              >
+                <h2 className="text-lg md:text-3xl font-medium">
+                  BLEED FESTIVAL
+                </h2>
+                <h2 className="text-lg md:text-3xl font-medium text-gray-400">
+                  {isMobile
+                    ? "Event Branding"
+                    : "Brand Identity - Event Branding"}
+                </h2>
+              </div>
             </div>
           </article>
         </Link>
+        {/* -------------- End Bleed Festival -------------- */}
 
         {/* Dior Zine & Solis */}
         <div className="grid grid-cols-1 md:grid-cols-[40%_60%] gap-8 w-full">
@@ -186,21 +288,23 @@ export default function Home() {
             // Desktop => your original widths and margin
             className="w-full md:w-[100%] md:ml-24"
           >
-            <article className="cursor-pointer p-4 flex flex-col justify-end">
-              <Image
-                src="/images/home/Diorzine_homepage.png"
-                alt="Diorzine"
-                className="object-contain"
-                width={1000}
-                height={600}
-              />
-              <div className="flex justify-between mt-2">
-                <h2 className="text-lg md:text-3xl font-medium">DIOR ZINE</h2>
-                <h2 className="text-lg md:text-3xl font-medium text-gray-400">
-                  Editorial
-                </h2>
-              </div>
-            </article>
+            <FadeInSection delayClass="delay-0">
+              <article className="cursor-pointer p-4 flex flex-col justify-end">
+                <Image
+                  src="/images/home/Diorzine_homepage.png"
+                  alt="Diorzine"
+                  className="object-contain"
+                  width={1000}
+                  height={600}
+                />
+                <div className="flex justify-between mt-2">
+                  <h2 className="text-lg md:text-3xl font-medium">DIOR ZINE</h2>
+                  <h2 className="text-lg md:text-3xl font-medium text-gray-400">
+                    Editorial
+                  </h2>
+                </div>
+              </article>
+            </FadeInSection>
           </Link>
 
           <Link
@@ -209,6 +313,7 @@ export default function Home() {
             // Desktop => w-60%, margin-left 44, margin-top ~120
             className="w-full md:w-[60%] md:ml-44 md:mt-120"
           >
+            <FadeInSection delayClass="delay-0">
             <article className="cursor-pointer p-4">
               <motion.video
                 src="/videos/home/Solis_animation_homepage.mp4"
@@ -229,6 +334,7 @@ export default function Home() {
                 </h2>
               </div>
             </article>
+            </FadeInSection>
           </Link>
         </div>
 
@@ -240,6 +346,7 @@ export default function Home() {
             // Desktop => w-60%, margin-left auto
             className="w-full md:w-[60%] md:ml-auto mb-24"
           >
+            <FadeInSection delayClass="delay-0">
             <article
               className="pb-0 flex flex-col mb-0 cursor-pointer"
               id="bleed"
@@ -263,6 +370,7 @@ export default function Home() {
                 </h2>
               </div>
             </article>
+            </FadeInSection>
           </Link>
         </div>
       </section>
@@ -308,7 +416,7 @@ export default function Home() {
               Srijchri@student.arteveldehs.be
             </a>
             <a href="tel:+3293329241" className="hover:underline">
-              +32 93 32 92 41
+              +32 483 32 92 41
             </a>
           </div>
         </div>

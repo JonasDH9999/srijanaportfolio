@@ -127,9 +127,7 @@ export default function Seewees() {
           // On desktop, your original: w-[50%], mt-8, mb-4, p-8
           // On mobile, stack full width with p-8
           className={`${
-            isMobile
-              ? "w-full p-8 object-contain"
-              : "w-[50%] mt-8 mb-4 p-8"
+            isMobile ? "w-full p-8 object-contain" : "w-[50%] mt-8 mb-4 p-8"
           }`}
           autoPlay
           loop
@@ -249,7 +247,7 @@ export default function Seewees() {
               Srijchri@student.arteveldehs.be
             </a>
             <a href="tel:+3293329241" className="hover:underline">
-              +32 93 32 92 41
+              +32 483 32 92 41
             </a>
           </div>
         </div>
