@@ -40,6 +40,7 @@ export default function Solis() {
 
   return (
     <div id="top" className="w-full overflow-x-hidden flex flex-col">
+      {/* Hero / Header */}
       <main
         className="flex min-h-[calc(100vh-5rem)] flex-col items-center justify-between p-0 m-0 relative"
         style={{
@@ -48,7 +49,7 @@ export default function Solis() {
           backgroundPosition: "center",
         }}
       >
-        {/* Overlay Image */}
+        {/* Overlay Image (centered) */}
         <div className="absolute inset-0 flex items-center justify-center">
           <Image
             src="/images/solis/Hero logo.png"
@@ -58,7 +59,7 @@ export default function Solis() {
             className="object-contain"
           />
         </div>
-        {/* Faint overlay to darken hero */}
+        {/* Faint overlay */}
         <div
           className="absolute inset-0 bg-black-500 opacity-50"
           style={{ pointerEvents: "none" }}
@@ -115,22 +116,24 @@ export default function Solis() {
         </div>
       </section>
 
-      {/* Magazine Spread Video */}
+      {/* All Products */}
       <section>
         <Image
           src="/images/solis/All_products.png"
-          alt="Bleed Festival Logo"
+          alt="All Products"
           width={1920}
           height={1080}
           className="w-[100%] mx-auto mt-2 mb-4 p-8"
         />
-        <div className="flex flex-col md:flex-row ml-8 mt-20 mr-6 justify-between gap-16">
-          {/* Left column */}
+
+        {/* Lipsticks & StarAnimation */}
+        <div className="flex flex-col md:flex-row ml-8 md:mt-20 mr-6 justify-between gap-4 md:gap-16">
+          {/* Left column: Lipstick_2.png */}
           <div className="flex-1">
             <div className="h-full">
               <Image
                 src="/images/solis/Lipstick_2.png"
-                alt="DiorZine"
+                alt="Lipstick_2"
                 width={1920}
                 height={1080}
                 className={`object-contain ${
@@ -139,16 +142,16 @@ export default function Solis() {
               />
             </div>
           </div>
-          {/* Right column */}
+          {/* Right column: Lipstick.png & StarAnimation1.mp4 */}
           <div className="flex flex-col flex-1 justify-between">
             <div
               style={{
-                transform: "translate(-10%, -20%)",
+                transform: isMobile ? "none" : "translate(-10%, -20%)",
               }}
             >
               <Image
                 src="/images/solis/Lipstick.png"
-                alt="DiorZine"
+                alt="Lipstick"
                 width={1920}
                 height={1080}
                 className={`object-contain ${
@@ -160,7 +163,7 @@ export default function Solis() {
               <motion.video
                 src="/videos/solis/StarAnimation1.mp4"
                 className={`object-contain ${
-                  isMobile ? "w-full bg-white" : "w-2/4 ml-0"
+                  isMobile ? "w-full bg-white mt-4" : "w-2/4 ml-0"
                 }`}
                 autoPlay
                 loop
@@ -169,7 +172,7 @@ export default function Solis() {
                 height={1080}
                 onLoadedData={(e) => {
                   const video = e.currentTarget;
-                  video.playbackRate = 1; // Set playback speed to 50% (slower)
+                  video.playbackRate = 1; // normal speed
                   video.currentTime = 1;
                 }}
               />
@@ -177,6 +180,7 @@ export default function Solis() {
           </div>
         </div>
 
+        {/* Sunscreen Mist area */}
         <section className="mb-0 mt-80">
           <div className="w-full md:w-2/5 p-8">
             <p className="md:text-3xl font-medium mb-2 text-md text-center md:text-left mb-20">
@@ -186,8 +190,9 @@ export default function Solis() {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row w-full justify-between">
-            {/* Left image */}
+          {/* Sunscreenmist.png & Sunscreenmist2.png */}
+          <div className="flex flex-col md:flex-row w-full justify-between gap-4 md:gap-0">
+            {/* Left image: Sunscreenmist.png */}
             <div className="w-full md:w-1/3 relative z-20">
               <div
                 style={{
@@ -196,15 +201,15 @@ export default function Solis() {
               >
                 <Image
                   src="/images/solis/Sunscreenmist.png"
-                  alt="Contents"
+                  alt="Sunscreen Mist"
                   width={1920}
                   height={1080}
                   className="w-full h-full z-50"
                 />
               </div>
             </div>
-            {/* Right image */}
-            <div className="w-full md:w-1/2 relative -ml-10 z-10">
+            {/* Right image: Sunscreenmist2.png */}
+            <div className="w-full md:w-1/2 relative md:-ml-10 z-10">
               <div
                 style={{
                   transform: isMobile
@@ -214,29 +219,29 @@ export default function Solis() {
               >
                 <Image
                   src="/images/solis/Sunscreenmist2.png"
-                  alt="Contents"
+                  alt="Sunscreen Mist 2"
                   width={1920}
                   height={1080}
-                  className="w-full ml-auto scale-105"
+                  className="w-full md:ml-auto md:scale-105"
                 />
               </div>
             </div>
           </div>
 
-          {/* 5.png */}
-          <div
-            className={`flex flex-col md:flex-row w-full md:w-1/2 pl-6 justify-between`}
-          >
+          {/* socials.png */}
+          <div className="flex flex-col md:flex-row w-full md:w-1/2 pl-6 justify-between">
             <Image
               src="/images/solis/socials.png"
-              alt="DiorZine"
+              alt="Socials"
               width={1920}
               height={1080}
-              className="mr-auto mt-2 mb-4 scale-130 w-full md:ml-50 z-50"
+              className={`mr-auto mt-4 md:mt-2 mb-4 scale-130 w-full md:ml-50 z-50 ${
+                isMobile ? "p-8" : ""
+              }`}
             />
           </div>
 
-          {/* Mid text block */}
+          {/* Text block */}
           <div className="w-full md:w-6/12 pr-8 mb-20 mt-80 ml-auto">
             <p className="md:text-3xl font-medium mb-2 text-md text-center md:text-left">
               One of the biggest challenges was finding the right balance
@@ -249,76 +254,81 @@ export default function Solis() {
             </p>
           </div>
 
-            {/* 10.png with motion video */}
-            <div
-            className={`relative flex flex-col md:flex-row w-full md:w-6/12 ml-auto mt-20 pr-8 justify-between`}
-            >
-            {/* Motion video */}
+          {/* StarAnimation2 & Sunscreenlotion1.png */}
+          <div
+            className={`relative flex flex-col md:flex-row w-full md:w-6/12 ml-auto mt-20 md:pr-8 justify-between`}
+          >
+            {/* On mobile, StarAnimation2 is a normal block, full width & p-8 */}
             <motion.video
               src="/videos/solis/StarAnimation2.mp4"
-              className="absolute right-2/3 bottom-1/10 transform -translate-x-1/2 -translate-y-1/3 w-2/5 z-10"
+              className={
+                isMobile
+                  ? "relative w-full pr-8 pl-8 object-contain"
+                  : "absolute right-2/3 bottom-1/10 transform -translate-x-1/2 -translate-y-1/3 w-2/5 z-10"
+              }
               autoPlay
               loop
               muted
               width={1920}
               height={1080}
               onLoadedData={(e) => {
-              const video = e.currentTarget;
-              video.playbackRate = 1; // Set playback speed
-              video.currentTime = 1;
+                const video = e.currentTarget;
+                video.playbackRate = 1;
+                video.currentTime = 1;
               }}
             />
-            {/* Image */}
+            {/* Sunscreenlotion1.png */}
             <Image
               src="/images/solis/Sunscreenlotion1.png"
-              alt="DiorZine"
+              alt="Sunscreen Lotion"
               width={1920}
               height={1080}
-              className="mr-auto mt-2 mb-24 w-full object-contain"
+              className={`mr-auto mt-2 md:mb-24 w-full object-contain ${
+                isMobile ? "pl-8 pr-8" : ""
+              }`}
             />
-            </div>
+          </div>
 
-
+          {/* Some_products.png & Aftersunlotion2.png */}
             <div
-            className="flex flex-col md:flex-row ml-8 mt-0 mr-6 justify-between gap-0 z-50"
+            className="flex flex-col md:flex-row md:ml-8 mt-4 md:mr-6 justify-between gap-4 md:gap-0 z-50"
             style={{
-              transform: "translateY(-150px)",
+              transform: isMobile ? "none" : "translateY(-150px)",
             }}
             >
-          {/* Left column */}
-          <div className="w-full md:w-1/2">
-            <div className="h-full">
+            {/* Left column: Some_products.png */}
+            <div className="w-full md:w-1/2">
+              <div className="h-full">
               <Image
                 src="/images/solis/Some_products.png"
-                alt="DiorZine"
+                alt="Some Products"
                 width={1920}
                 height={1080}
                 className={`object-cover ${
-                  isMobile ? "w-full bg-white" : "ml-8 w-2/3 scale-110"
+                isMobile ? "w-full bg-white pl-8 pr-8" : "ml-8 w-2/3 scale-110"
                 }`}
               />
+              </div>
             </div>
-          </div>
-          {/* Right column */}
-          <div className="w-full md:w-1/2">
-            <div
+            {/* Right column: Aftersunlotion2.png */}
+            <div className="w-full md:w-1/2 mb-20">
+              <div
               style={{
-                transform: "translateX(-150px)",
+                transform: isMobile ? "none" : "translateX(-150px)",
               }}
-            >
+              >
               <Image
                 src="/images/solis/Aftersunlotion2.png"
-                alt="DiorZine"
+                alt="After Sun Lotion"
                 width={1920}
                 height={1080}
                 className={`object-cover ${
-                  isMobile ? "w-full bg-white" : "w-2/3 scale-110"
+                isMobile ? "w-full bg-white pl-8 pr-8" : "w-2/3 scale-110"
                 }`}
               />
+              </div>
             </div>
-            
-          </div>
-        </div>
+            </div>
         </section>
       </section>
 
@@ -340,11 +350,7 @@ export default function Solis() {
               stroke="currentColor"
               className="h-8 w-8"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5 15l7-7 7 7"
-              />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
             </svg>
           </a>
         </div>
