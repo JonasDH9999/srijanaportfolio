@@ -21,7 +21,7 @@ function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-function FadeInSection({ children, delayClass = "" }) {
+function FadeInSection({ children, delayClass = "" }: { children: React.ReactNode; delayClass?: string }) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
