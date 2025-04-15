@@ -150,7 +150,7 @@ export default function BleedFestival() {
             
             onLoadedData={(e) => {
               const video = e.currentTarget;
-              video.playbackRate = 0.2; // Set playback speed to 50% (slower)
+              video.playbackRate = 1; // Set playback speed to 50% (slower)
               video.currentTime = 1;
             }}
           />
@@ -175,7 +175,7 @@ export default function BleedFestival() {
           style={{ objectPosition: "center" }}
           onLoadedData={(e) => {
             const video = e.currentTarget;
-            video.playbackRate = 0.5; // 50% speed
+            video.playbackRate = 1; // 50% speed
             video.currentTime = 1;
           }}
         />
