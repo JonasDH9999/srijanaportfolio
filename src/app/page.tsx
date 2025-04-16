@@ -64,7 +64,6 @@ function FadeInSection({
 }
 
 export default function Home() {
-
   // -------------- NEW: Curtains scroll logic --------------
   useEffect(() => {
     const SCROLL_START = 0; // Where curtains start opening
@@ -263,7 +262,7 @@ export default function Home() {
                 md:text-[8.5rem]
               "
                     >
-                    & DESIGN
+                      & DESIGN
                     </span>
                   </span>
                 </div>
@@ -314,6 +313,7 @@ export default function Home() {
                 src="/videos/home/Bleed_animation_homepage.mp4"
                 className={`object-contain ${isMobile ? "w-full" : "p-8 pb-2"}`}
                 autoPlay
+                playsInline
                 loop
                 muted
                 style={{
@@ -322,7 +322,9 @@ export default function Home() {
                 }}
                 onLoadedData={(e) => {
                   const video = e.currentTarget;
-                  video.currentTime = 1;
+                  if (video.readyState >= 2) {
+                    video.currentTime = 1;
+                  }
                 }}
               />
 
