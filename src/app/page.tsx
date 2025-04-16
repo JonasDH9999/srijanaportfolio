@@ -126,141 +126,161 @@ export default function Home() {
 
       {/* Main content area */}
       <main
-  id="about"
-  className="
+        id="about"
+        className="
     min-h-screen 
     flex 
     flex-col 
     mt-12 
     md:mt-25 
-    justify-start 
+    max-[1480px]:justify-center justify-start 
     items-start
   "
-  style={{ height: "calc(95vh - 4rem)" }}
->
-  {/* Shared container for unified layout */}
-  <div className="w-full max-w-screen-2xl px-6 md:px-24 mx-auto flex flex-col gap-12">
-
-    {/* BUILDING BRIDGES */}
-    <div className="overflow-hidden">
-      <div
-        className="
+        style={{ height: "calc(95vh - 4rem)" }}
+      >
+        <div className="w-full max-w-screen-2xl px-6 md:px-24 mx-auto flex flex-col max-[1480px]:gap-2 gap-12">
+          {/* BUILDING BRIDGES */}
+          <div className="overflow-hidden">
+            <div
+              className="
           text-[2.5rem] 
-          sm:text-[3rem] 
-          md:text-[8rem] 
+          max-[1480px]:text-[3rem] 
+          text-[8rem] 
           font-medium 
           tracking-wider 
           leading-tight 
           slide-up
           flex flex-wrap md:flex-nowrap justify-between items-start gap-x-6
+          max-[1480px]:flex-col max-[1480px]:items-center max-[1480px]:text-center
         "
-      >
-        <span className="whitespace-nowrap">BUILDING</span>
-        <span className="whitespace-nowrap">BRIDGES</span>
-      </div>
-    </div>
+            >
+              <span className="whitespace-nowrap">BUILDING</span>
+              <span className="whitespace-nowrap">BRIDGES</span>
+            </div>
+          </div>
 
-    {/* BETWEEN */}
-    <div className="overflow-hidden">
-      <div
-        className="
+          {/* BETWEEN */}
+          <div className="overflow-hidden">
+            <div
+              className="
           text-[2.5rem] 
-          sm:text-[3rem] 
-          md:text-[8rem] 
+          max-[1480px]:text-[3rem] 
+          text-[8rem] 
           font-medium 
           tracking-wider 
           leading-tight 
           slide-up 
           delay-1
+          max-[1480px]:text-center
         "
-      >
-        <span className="underline underline-offset-0 decoration-blue-500 decoration-1">
-          BETWEEN
-        </span>
-      </div>
-    </div>
+            >
+              <span className="underline underline-offset-0 decoration-blue-500 decoration-1">
+                BETWEEN
+              </span>
+            </div>
+          </div>
 
-    {/* GRID ROW: Paragraph & Stories */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full">
-      {/* Left Column: Paragraph */}
-      <div className="flex flex-col gap-4 items-start justify-start">
-        <div className="overflow-hidden">
-          <div
-            className="
+          {/* GRID ROW: Paragraph & Stories */}
+          <div className="grid max-[1480px]:grid-cols-1 grid-cols-2 max-[1480px]:gap-4 gap-12 w-full">
+            {/* Paragraph */}
+            <div
+              className="
+          flex flex-col gap-4 items-start justify-start 
+          max-[1480px]:hidden
+        "
+            >
+              <div className="overflow-hidden">
+                <div
+                  className="
               mt-6 
               text-base 
-              sm:text-[1.2rem] 
-              md:text-[1.8rem] 
+              max-[1480px]:text-[1.2rem] 
+              text-[1.8rem] 
               slide-up 
               delay-2
             "
-          >
-            <span className="w-full inline-flex justify-end">
-              I am Srijana, a graphic design student
-              and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </span>
-            freelancer based in Belgium. I turn ideas into visuals that tell a
-            story. Whether it&#39;s a logo, brand identity, UI/UX design, or any
-            other creative project, I design with meaning and emotion.
-          </div>
-        </div>
+                >
+                  <span className="w-full inline-flex justify-end">
+                    I am Srijana, a graphic design student
+                    and&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </span>
+                  freelancer based in Belgium. I turn ideas into visuals that
+                  tell a story. Whether it&#39;s a logo, brand identity, UI/UX
+                  design, or any other creative project, I design with meaning
+                  and emotion.
+                </div>
+              </div>
 
-        <div className="slide-up delay-2">
-          <Image
-            src="/images/home/nFXwF.png"
-            alt="Arrow Down"
-            width={60}
-            height={60}
-            className="object-contain multiply-white"
-          />
-        </div>
-      </div>
+              <div className="slide-up delay-2">
+                <Image
+                  src="/images/home/nFXwF.png"
+                  alt="Arrow Down"
+                  width={60}
+                  height={60}
+                  className="object-contain multiply-white"
+                />
+              </div>
+            </div>
 
-      {/* Right Column: STORIES & DESIGN */}
-      <div className="w-full">
-        <div
-          className="
-            text-[3.5rem] 
-            sm:text-[4rem] 
-            md:text-[8rem] 
+            {/* STORIES & DESIGN */}
+            <div className="w-full">
+              <div
+                className={`
             font-medium 
             tracking-wider 
             leading-tight 
             italic
-          "
-          style={{ transform: "translateY(-20px)" }}
-        >
-          <div className="overflow-hidden">
-            <div className="slide-up delay-3">
-              <div className="flex flex-col text-left md:text-right">
+            slide-up 
+            delay-3
+            flex flex-col items-end
+            text-[3rem] max-[1480px]:text-[3.5rem] text-[8rem]
+            max-[1480px]:items-center max-[1480px]:text-center
+            ${
+              typeof window !== "undefined" && window.innerWidth < 1480
+                ? ""
+                : "translate-y-[-20px]"
+            }
+          `}
+              >
                 <span
                   className="
-                    text-[4rem] 
-                    sm:text-[4.5rem] 
-                    md:text-[8.5rem]
-                  "
+              text-[3.5rem] 
+              max-[1480px]:text-[4rem] 
+              md:text-[8.5rem]
+              
+            "
                 >
                   STORIES
                 </span>
                 <span
                   className="
-                    text-[3rem] 
-                    sm:text-[3.5rem] 
-                    md:text-[8rem]
-                  "
+              text-[3rem] 
+              max-[1480px]:text-[3.5rem] 
+              md:text-[8rem]
+              
+            "
                 >
                   & DESIGN
                 </span>
+
+                {/* Name + Arrow shown under 1480px */}
+                <div className="mt-6 flex flex-col items-center gap-4 min-[1480px]:hidden">
+                  <p className="text-lg sm:text-xl font-medium">
+                    Srijana Christiaens
+                  </p>
+                  <Image
+                    src="/images/home/nFXwF.png"
+                    alt="Arrow Down"
+                    width={60}
+                    height={60}
+                    className="object-contain multiply-white"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</main>
-
-
+      </main>
 
       {/* Projects Section */}
       <section id="projects">
@@ -280,7 +300,7 @@ export default function Home() {
             >
               {/* LEFT CURTAIN */}
               <div
-                className="curtain-left absolute bottom-45 w-[15%] bg-white z-50 h-full"
+                className="curtain-left absolute max-[680px]:bottom-0 bottom-45 w-[15%] bg-white z-50 h-full"
                 style={{
                   left: 0,
                   transform: isMobile ? undefined : "translateY(-50px)",
@@ -290,7 +310,7 @@ export default function Home() {
 
               {/* RIGHT CURTAIN */}
               <div
-                className="curtain-right absolute bottom-45 w-[15%] bg-white z-50 h-full"
+                className="curtain-right absolute max-[680px]:bottom-0 bottom-45 w-[15%] bg-white z-50 h-full"
                 style={{
                   right: 0,
                   transform: isMobile ? undefined : "translateY(-50px)",
