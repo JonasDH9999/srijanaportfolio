@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -381,8 +380,8 @@ export default function Home() {
             className="w-full md:w-[60%] md:ml-44 md:mt-120"
           >
             <FadeInSection delayClass="delay-0">
-              <article className="cursor-pointer p-4">
-                <motion.video
+                <article className="cursor-pointer p-4">
+                <video
                   src="/videos/home/Solis_animation_homepage.mp4"
                   className="w-full object-contain"
                   autoPlay
@@ -390,17 +389,17 @@ export default function Home() {
                   muted
                   style={{ objectPosition: "center" }}
                   onLoadedData={(e) => {
-                    const video = e.currentTarget;
-                    video.currentTime = 1;
+                  const video = e.currentTarget;
+                  video.currentTime = 1;
                   }}
                 />
                 <div className="flex justify-between mt-2">
                   <h2 className="text-lg md:text-3xl font-medium">SOLIS</h2>
                   <h2 className="text-lg md:text-3xl font-medium text-gray-400">
-                    Packaging - Brand Identity
+                  Packaging - Brand Identity
                   </h2>
                 </div>
-              </article>
+                </article>
             </FadeInSection>
           </Link>
         </div>
@@ -414,11 +413,11 @@ export default function Home() {
             className="w-full md:w-[60%] md:ml-auto mb-24"
           >
             <FadeInSection delayClass="delay-0">
-              <article
+                <article
                 className="pb-0 flex flex-col mb-0 cursor-pointer"
                 id="bleed"
-              >
-                <motion.video
+                >
+                <video
                   src="/videos/seewees/Animation2Chilli.mp4"
                   className="object-contain p-8 pb-2"
                   autoPlay
@@ -426,17 +425,17 @@ export default function Home() {
                   muted
                   style={{ objectPosition: "center" }}
                   onLoadedData={(e) => {
-                    const video = e.currentTarget;
-                    video.currentTime = 1;
+                  const video = e.currentTarget;
+                  video.currentTime = 1;
                   }}
                 />
                 <div className="flex justify-between p-8 pt-0 mt-0">
                   <h2 className="text-lg md:text-3xl font-medium">SEEWEES</h2>
                   <h2 className="text-lg md:text-3xl font-medium text-gray-400">
-                    Packaging - Logo
+                  Packaging - Logo
                   </h2>
                 </div>
-              </article>
+                </article>
             </FadeInSection>
           </Link>
         </div>

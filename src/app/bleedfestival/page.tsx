@@ -131,41 +131,40 @@ export default function BleedFestival() {
       <section className="mb-20">
         <div className="w-full md:w-2/5 p-8">
           <p className="md:text-3xl font-medium mb-2 text-md text-center md:text-left">
-            For this project, I created a dynamic ‘moving’ logo and a full range
-            of brand applications, including posters, social media graphics,
-            merchandise, and badges. Every decision was made to ensure
-            consistency and a strong visual presence across different channels.
+        For this project, I created a dynamic ‘moving’ logo and a full range
+        of brand applications, including posters, social media graphics,
+        merchandise, and badges. Every decision was made to ensure
+        consistency and a strong visual presence across different channels.
           </p>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between w-full p-8 gap-8">
-          <motion.video
-            src="/videos/bleedfestival/Logos_animation.mp4"
-            className={`object-cover ${isMobile ? "w-full bg-white" : "w-1/2"}`}
-            autoPlay
-            loop
-            muted
-            width={1920}
-            height={1080}
-            
-            onLoadedData={(e) => {
-              const video = e.currentTarget;
-              video.playbackRate = 1; // Set playback speed to 50% (slower)
-              video.currentTime = 1;
-            }}
+          <video
+        src="/videos/bleedfestival/Logos_animation.mp4"
+        className={`object-cover ${isMobile ? "w-full bg-white" : "w-1/2"}`}
+        autoPlay
+        loop
+        muted
+        width={1920}
+        height={1080}
+        onLoadedData={(e) => {
+          const video = e.currentTarget;
+          video.playbackRate = 1; // Set playback speed to 50% (slower)
+          video.currentTime = 1;
+        }}
           />
           <Image
-            src="/images/bleedfestival/Wristbands.png"
-            alt="Bleed Festival Poster"
-            width={1080}
-            height={1920}
-            className="w-full md:w-1/2 ml-auto mt-2 mb-4"
+        src="/images/bleedfestival/Wristbands.png"
+        alt="Bleed Festival Poster"
+        width={1080}
+        height={1920}
+        className="w-full md:w-1/2 ml-auto mt-2 mb-4"
           />
         </div>
-        <motion.video
+        <video
           src="/videos/bleedfestival/Badges_card_animation.mp4"
           className={`object-cover ${
-            isMobile ? "w-full mt-30" : "w-2/5 ml-auto mt-30"
+        isMobile ? "w-full mt-30" : "w-2/5 ml-auto mt-30"
           }`}
           autoPlay
           loop
@@ -174,9 +173,9 @@ export default function BleedFestival() {
           height={1080}
           style={{ objectPosition: "center" }}
           onLoadedData={(e) => {
-            const video = e.currentTarget;
-            video.playbackRate = 1; // 50% speed
-            video.currentTime = 1;
+        const video = e.currentTarget;
+        video.playbackRate = 1; // 50% speed
+        video.currentTime = 1;
           }}
         />
       </section>
@@ -194,7 +193,7 @@ export default function BleedFestival() {
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-4" id="wristbands">
-          {[  
+          {[
             {
               src: "/images/bleedfestival/Official wristbands speaker.png",
               alt: "Bleed Festival Poster Speaker",
@@ -220,11 +219,11 @@ export default function BleedFestival() {
               className={`w-full ${isMobile ? "scale-120" : ""}`}
             >
               <Image
-              src={item.src}
-              alt={item.alt}
-              width={1920}
-              height={1080}
-              className="w-full ml-auto mt-2 mb-4"
+                src={item.src}
+                alt={item.alt}
+                width={1920}
+                height={1080}
+                className="w-full ml-auto mt-2 mb-4"
               />
             </motion.div>
           ))}
@@ -241,13 +240,12 @@ export default function BleedFestival() {
             height={1080}
             className="w-full mt-2 mb-0"
           />
-          
         </div>
       </section>
 
       {/* Social Media Stories Video */}
       <section className="mt-12 md:mt-0 mb-12 md:mb-60">
-        <motion.video
+        <video
           src="/videos/bleedfestival/Social_media_stories.mp4"
           className={`object-cover ${
             isMobile ? "w-full mt-30" : "w-2/5 ml-auto mt-30 p-8"
@@ -260,7 +258,7 @@ export default function BleedFestival() {
           style={{ objectPosition: "center" }}
           onLoadedData={(e) => {
             const video = e.currentTarget;
-            video.playbackRate = 1; 
+            video.playbackRate = 1;
             video.currentTime = 1;
           }}
         />

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 /** A simple hook to detect if screen is below a certain width (default 768px). */
 function useIsMobile(breakpoint = 768) {
@@ -160,7 +159,7 @@ export default function Solis() {
               />
             </div>
             <div>
-              <motion.video
+              <video
                 src="/videos/solis/StarAnimation1.mp4"
                 className={`object-contain ${
                   isMobile ? "w-full bg-white mt-4" : "w-2/4 ml-0"
@@ -259,7 +258,7 @@ export default function Solis() {
             className={`relative flex flex-col md:flex-row w-full md:w-6/12 ml-auto mt-20 md:pr-8 justify-between`}
           >
             {/* On mobile, StarAnimation2 is a normal block, full width & p-8 */}
-            <motion.video
+            <video
               src="/videos/solis/StarAnimation2.mp4"
               className={
                 isMobile

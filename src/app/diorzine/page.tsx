@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 /** A simple hook to detect if screen is below a certain width (default 768px). */
 function useIsMobile(breakpoint = 768) {
@@ -109,7 +108,7 @@ export default function DiorZine() {
 
       {/* Magazine Spread Video */}
       <section>
-        <motion.video
+        <video
           src="/videos/diorzine/Dior_Magazine_Spread_Animation.mp4"
           className={`object-cover ${
             isMobile ? "w-full bg-white" : "w-full mb-12 md:mb-0"
