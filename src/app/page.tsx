@@ -136,7 +136,7 @@ export default function Home() {
     flex 
     flex-col 
     mt-12 
-    md:mt-35 
+    md:mt-25 
     justify-start 
     md:justify-start 
     items-start
@@ -279,7 +279,7 @@ export default function Home() {
         <Link href="/bleedfestival">
           <article
             className={`w-full flex flex-col cursor-pointer ${
-              isMobile ? "p-0 mb-14" : "pb-0 mb-0"
+              isMobile ? "p-0 mb-14" : "pb-0 mb-0 mt-10"
             }`}
             id="bleed"
           >
@@ -291,7 +291,7 @@ export default function Home() {
             >
               {/* LEFT CURTAIN */}
               <div
-                className="curtain-left absolute bottom-50 w-[15%] bg-white z-50 h-full"
+                className="curtain-left absolute bottom-45 w-[15%] bg-white z-50 h-full"
                 style={{
                   left: 0,
                   transform: isMobile ? undefined : "translateY(-50px)",
@@ -301,7 +301,7 @@ export default function Home() {
 
               {/* RIGHT CURTAIN */}
               <div
-                className="curtain-right absolute bottom-50 w-[15%] bg-white z-50 h-full"
+                className="curtain-right absolute bottom-45 w-[15%] bg-white z-50 h-full"
                 style={{
                   right: 0,
                   transform: isMobile ? undefined : "translateY(-50px)",
