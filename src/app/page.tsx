@@ -312,10 +312,11 @@ export default function Home() {
               <video
                 src="/videos/home/Bleed_animation_homepage.mp4"
                 className={`object-contain ${isMobile ? "w-full" : "p-8 pb-2"}`}
-                autoPlay
+                autoPlay={true}
                 muted
-                loop
-                playsInline
+                loop={true}
+                controls={false}
+                playsInline={true}
                 preload="auto"
                 style={{
                   objectPosition: "center",
