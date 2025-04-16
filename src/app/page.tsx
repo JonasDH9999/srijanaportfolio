@@ -313,14 +313,14 @@ export default function Home() {
                 src="/videos/home/Bleed_animation_homepage.mp4"
                 className={`object-contain ${isMobile ? "w-full" : "p-8 pb-2"}`}
                 autoPlay
-                playsInline
-                loop
                 muted
+                loop
+                playsInline
+                preload="auto"
                 style={{
                   objectPosition: "center",
                   transform: isMobile ? undefined : "translateY(-200px)",
                 }}
-                
               />
 
               {/* Headings */}
