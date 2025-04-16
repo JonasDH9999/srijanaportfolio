@@ -320,12 +320,7 @@ export default function Home() {
                   objectPosition: "center",
                   transform: isMobile ? undefined : "translateY(-200px)",
                 }}
-                onLoadedData={(e) => {
-                  const video = e.currentTarget;
-                  if (video.readyState >= 2) {
-                    video.currentTime = 1;
-                  }
-                }}
+                
               />
 
               {/* Headings */}
